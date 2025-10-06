@@ -1,0 +1,42 @@
+{
+  "os": {
+    "classification": {
+      "knn_00": { "embedding_size": 128, "num_heads": 8 },
+      "knn_05": { "embedding_size": 128, "num_heads": 8 },
+      "anat":    { "embedding_size": 128, "num_heads": 4 },
+      "pca_corr":{ "embedding_size": 32, "num_heads": 4 }
+    },
+    "regression": {
+      "3": {
+        "knn_00": { "embedding_size": 128, "num_heads": 2 },
+        "knn_05": { "embedding_size": 32, "num_heads": 2 },
+        "anat":    { "embedding_size": 32, "num_heads": 2 },
+        "pca_corr":{ "embedding_size": 32, "num_heads": 2}
+      },
+      "4": {
+        "knn_00": { "embedding_size": 64, "num_heads": 4 },
+        "knn_05": { "embedding_size": 32, "num_heads": 2 },
+        "anat":    { "embedding_size": 32, "num_heads": 2 },
+        "pca_corr":{ "embedding_size": 128, "num_heads": 2 }
+      }
+    }
+  },
+  "pfi": {
+    "regression": {
+      "3": {
+        "knn_00": { "embedding_size": 128, "num_heads": 2 },
+        "knn_05": { "embedding_size": 64, "num_heads": 4 },
+        "anat":    { "embedding_size": 64, "num_heads": 4 },
+        "pca_corr":{ "embedding_size": 64, "num_heads": 4 }
+      }
+    }
+  },
+  "hr": {
+    "classification": {
+      "knn_00": { "embedding_size": 128, "num_heads": 8 },
+      "knn_05": { "embedding_size": 64, "num_heads": 4 },
+      "anat":    { "embedding_size": 64, "num_heads": 4 },
+      "pca_corr":{ "embedding_size": 64, "num_heads": 4 }
+    }
+  }
+}

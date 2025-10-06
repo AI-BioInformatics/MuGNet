@@ -1,0 +1,43 @@
+{
+  "os": {
+    "classification": {
+      "knn_00":   { "embedding_size": 128, "num_heads": 8, "learning_rate": 0.0005, "weight_decay": 0.001 },
+      "knn_05":   { "embedding_size": 128, "num_heads": 8, "learning_rate": 0.0005, "weight_decay": 0.01 },
+      "anat":     { "embedding_size": 128, "num_heads": 4, "learning_rate": 0.005, "weight_decay": 0.001 },
+      "pca_corr": { "embedding_size": 32,  "num_heads": 4, "learning_rate": 0.001, "weight_decay": 0.0001 }
+    },
+    "regression": {
+      "3": {
+        "knn_00":   { "embedding_size": 128, "num_heads": 2, "learning_rate": 0.0001, "weight_decay": 0.01 },
+        "knn_05":   { "embedding_size": 32,  "num_heads": 2, "learning_rate": 0.0001, "weight_decay": 0.0001 },
+        "anat":     { "embedding_size": 32,  "num_heads": 2, "learning_rate": 0.0005, "weight_decay": 0.0001 },
+        "pca_corr": { "embedding_size": 32,  "num_heads": 2, "learning_rate": 0.0005, "weight_decay": 0.0001 }
+      },
+      "4": {
+        "knn_00":   { "embedding_size": 64,  "num_heads": 4, "learning_rate": 0.0001, "weight_decay": 0.0001 },
+        "knn_05":   { "embedding_size": 32,  "num_heads": 2, "learning_rate": 0.0001, "weight_decay": 0.0001 },
+        "anat":     { "embedding_size": 32,  "num_heads": 2, "learning_rate": 0.0001, "weight_decay": 0.0001 },
+        "pca_corr": { "embedding_size": 128, "num_heads": 2, "learning_rate": 0.0001, "weight_decay": 0.001 }
+      }
+    }
+  },
+  "pfi": {
+    "regression": {
+      "3": {
+        "knn_00":   { "embedding_size": 128, "num_heads": 2, "learning_rate": 0.0001, "weight_decay": 0.0001 },
+        "knn_05":   { "embedding_size": 64,  "num_heads": 4, "learning_rate": 0.0005, "weight_decay": 0.0001 },
+        "anat":     { "embedding_size": 64,  "num_heads": 4, "learning_rate": 0.0005, "weight_decay": 0.0001 },
+        "pca_corr": { "embedding_size": 64,  "num_heads": 4, "learning_rate": 0.0005, "weight_decay": 0.0001 }
+      }
+    }
+  },
+  "hr": {
+    "classification": {
+      "knn_00":   { "embedding_size": 32, "num_heads": 8, "learning_rate": 0.001, "weight_decay": 0.001 },
+      "knn_05":   { "embedding_size": 64,  "num_heads": 4, "learning_rate": 0.0005, "weight_decay": 0.0001 },
+      "anat":     { "embedding_size": 64,  "num_heads": 4, "learning_rate": 0.0005, "weight_decay": 0.0001 },
+      "pca_corr": { "embedding_size": 64,  "num_heads": 4, "learning_rate": 0.0005, "weight_decay": 0.0001 }
+    }
+  }
+}
+

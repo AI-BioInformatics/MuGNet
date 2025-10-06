@@ -1,0 +1,10 @@
+# .gitignore
+outputs/
+graphs/
+adjacency_matrices/
+*.pt
+*.pkl
+*.npy
+*.csv
+__pycache__/
+.ipynb_checkpoints/
