@@ -1,10 +1,23 @@
-# 🧬 MuGNet Pipeline – Multi-Tissue GNN for Clinical Prediction
+# 🧬 MuGNet: A Graph-based Framework for Multi-tissue Integration in Computational Pathology
 
 This repository provides a complete pipeline for building and training a Graph Neural Network (GNN) for survival or biomarker prediction from multi-tissue histological images. Each patient is modeled as a graph, where nodes are tissue-specific Whole Slide Image (WSI) embeddings and edges encode morphological or anatomical relationships.
 
 ---
 
-## 🚀 Overview
+## 🔍 Description
+
+MuGNet is a deep learning framework that models multiple whole-slide images (WSIs) from the same patient as a graph for patient-level prediction tasks in computational pathology. Each WSI is represented as a node, with edges reflecting morphological and biological relationships between tissues. The model leverages Graph Neural Networks (GNNs) with attention-based message passing to integrate and interpret multi-tissue data, enabling accurate and interpretable predictions of clinical outcomes such as survival time and therapy response.
+
+---
+
+## 📊 Dataset information
+
+- **Dataset source**: Derived from the EU DECIDER Project (ClinicalTrials.gov ID: NCT04846933) on high-grade serous ovarian cancer (HGSOC).
+- **Data composition**:
+  -  243 patients, including NACT and PDS
+  -  WSIs from multiple tissue sites (ovary, omentum, peritoneum, mesenterium, lymph nodes, e.g.)
+
+## 🚀 Code information
 
 - **Input**: WSI-level embeddings and clinical labels
 - **Output**: Patient graphs, adjacency matrices, and trained models
@@ -12,7 +25,15 @@ This repository provides a complete pipeline for building and training a Graph N
   - Binary classification (e.g., OS short-term vs long-term)
   - Survival regression (e.g., 3-bin or 4-bin OS, 3-bin PFI)
 - **Graph type**: One graph per patient
+  - **Nodes**: individual WSIs per patient
+  - **Edges**: weighted by similarity metrics between slide embeddings
 - **GNN**: 2-layer GAT + Global Attention Pooling
+
+---
+## 🏗️ Installation
+First, ensure that you have Python and pip installed.
+To install all required dependencies, run:
+`pip install -r requirements.txt` 
 
 ---
 
@@ -122,8 +143,6 @@ outputs/{label}_{task}_{adj_method}_{num_bins}bin/
      - BCEWithLogitsLoss or NLLSurvLoss
 
 ---
-
-
 
 ## 🧪 Commands
 
