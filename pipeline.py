@@ -81,13 +81,13 @@ def main():
 
     args.output_dir = os.path.join(args.output_dir, output_dir_name)
 
-    labels_path = "/work/H2020DeciderFicarra/D2_4/datasets/DECIDER_cohorts/docs/240607_Clinical_export_Decider_Collab.xlsx"
-    labels_path_hr = "/work/H2020DeciderFicarra/D2_4/datasets/DECIDER_cohorts/docs/HR_dataset.csv"
-    embeddings_path_nact = "/work/H2020DeciderFicarra/D2_4/datasets/DECIDER_cohorts/NACT/interval/slide_embeddings_TITAN"
-    embedding_path_pds = "/work/H2020DeciderFicarra/D2_4/datasets/DECIDER_cohorts/PDS/HR_status/slide_embeddings_TITAN"
+    labels_path = "docs/labels.xlsx"
+    labels_path_hr = "docs/HR_dataset.csv"
+    embeddings_path_nact = "data/slide_embeddings_TITAN"
+    embedding_path_pds = "data/slide_embeddings_TITAN"
     tissue_list = ['Adn', 'Per', 'Ome', 'Tub', 'Ova', 'Ute', 'Vag', 'Bow', 'Mes', 'LN']
 
-    # Percorsi di output
+    # Output paths
     splits_path = os.path.join(args.output_dir, "splits/kfold_patient_splits.csv")
     labels_out_path = os.path.join(args.output_dir, "splits/patient_labels.csv")
     adjacency_path = os.path.join(args.output_dir, f"adjacency_matrices/{args.adj_method}")
@@ -104,7 +104,7 @@ def main():
         adj_method=args.adj_method
     )
 
-    # === Etichette
+    # === Labels
     if args.task == "classification":
         print(f"🔍 Using binary {args.label.upper()} classification labels")
         
@@ -117,7 +117,7 @@ def main():
             label_dict = hr_binary(labels_path_hr, embeddings_path)
             
         elif args.label.upper() == "PFI":
-            raise ValueError("❌ La label PFI è disponibile solo per il task di regressione.")
+            raise ValueError("❌ PFI label available only for regression task.")
         
         df_splits = create_stratified_folds_from_label_dict(label_dict)
         df_labels = create_labels_df(label_dict)
@@ -127,7 +127,7 @@ def main():
         print(f"📁 Saved splits to {splits_path}")
         print(f"📁 Saved labels to {labels_out_path}")
 
-        # === Adiacenza
+        # === Adjacency matrices
         print(f"🔧 Generating adjacency matrices with method: {args.adj_method}")
         if "knn" in args.adj_method:
             compute_adjacency_from_split_knn(
@@ -153,7 +153,7 @@ def main():
             if not os.path.exists(source_file):
                 raise FileNotFoundError(f"❌ Matrice anatomica non trovata in: {source_file}")
 
-            for fold in range(1, 6):  # oppure: sorted(df_splits["fold"].unique())
+            for fold in range(1, 6): 
                 for set_type in ["train", "val", "test"]:
                     target_dir = os.path.join(adjacency_path, set_type, f"fold_{fold}")
                     ensure_directory_exists(target_dir)
@@ -168,7 +168,7 @@ def main():
 
         print("✅ Adjacency matrices created.")
 
-        # === Grafi
+        # === Graphs
         print("📈 Generating patient graphs...")
         folds = df_splits["fold"].unique()
 
@@ -225,7 +225,7 @@ def main():
         print(f"📁 Saved splits to {splits_path}")
         print(f"📁 Saved labels to {labels_out_path}")
 
-        # === Adiacenza
+        # === Adjacency
         print(f"🔧 Generating adjacency matrices with method: {args.adj_method}")
         if "knn" in args.adj_method:
             compute_adjacency_from_split_knn(
@@ -252,7 +252,7 @@ def main():
                 raise FileNotFoundError(f"❌ Matrice anatomica non trovata in: {source_file}")
             folds = df_splits["fold"].unique()
 
-            for fold in folds:  # oppure: sorted(df_splits["fold"].unique())
+            for fold in folds: 
                 for set_type in ["train", "val", "test"]:
                     target_dir = os.path.join(adjacency_path, set_type, f"fold_{fold}")
                     ensure_directory_exists(target_dir)
@@ -270,7 +270,7 @@ def main():
 
         print("✅ Adjacency matrices created.")
 
-        # === Grafi
+        # === Graphs
         print("📈 Generating patient graphs...")
         folds = df_splits["fold"].unique()
 
