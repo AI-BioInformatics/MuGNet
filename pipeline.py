@@ -148,10 +148,10 @@ def main():
         elif args.adj_method.lower() == "anat":
             import shutil
 
-            source_file = "20_GitHub/anatomic_adjacency_matrix.csv"
+            source_file = "anatomic_adjacency_matrix.csv"
 
             if not os.path.exists(source_file):
-                raise FileNotFoundError(f"❌ Matrice anatomica non trovata in: {source_file}")
+                raise FileNotFoundError(f"❌ Anatomical matrix not found in: {source_file}")
 
             for fold in range(1, 6): 
                 for set_type in ["train", "val", "test"]:
@@ -162,9 +162,9 @@ def main():
 
                     if not os.path.exists(dest_file):
                         shutil.copy(source_file, dest_file)
-                        print(f"📦 Matrice anatomica copiata in: {dest_file}")
+                        print(f"📦 Anatomical matrix copied in: {dest_file}")
                     else:
-                        print(f"✅ Matrice già presente in: {dest_file}")
+                        print(f"✅ Anatomical matrix already in: {dest_file}")
 
         print("✅ Adjacency matrices created.")
 
@@ -199,10 +199,6 @@ def main():
             learning_rate=model_config["learning_rate"],
             weight_decay=model_config["weight_decay"]
         )
-
-
-        
-    
     else:
         print(f"🔍 Using discretized {args.label.upper()} labels with {args.num_bins} bins")
         embeddings_path = embeddings_path_nact
@@ -211,11 +207,11 @@ def main():
             
         elif args.label.upper() == "PFI":
             if args.num_bins != 3:
-                raise ValueError("❌ PFI supporta solo 3 bin. Imposta --num_bins 3.")
+                raise ValueError("❌ PFI only supports 3 bin. Set --num_bins 3.")
             label_dict = pfi_discrete(labels_path, embeddings_path)
             
         elif args.label.upper() == "HR":
-            raise ValueError("❌ La label HR è disponibile solo per il task di classificazione.")
+            raise ValueError("❌ HR label only available for classification task.")
 
         df_splits = create_stratified_folds_from_label_dict(label_dict)
         df_labels = create_labels_df(label_dict)
@@ -246,10 +242,10 @@ def main():
         elif args.adj_method.lower() == "anat":
             import shutil
 
-            source_file = "20_GitHub/anatomic_adjacency_matrix.csv"
+            source_file = "anatomic_adjacency_matrix.csv"
 
             if not os.path.exists(source_file):
-                raise FileNotFoundError(f"❌ Matrice anatomica non trovata in: {source_file}")
+                raise FileNotFoundError(f"❌ Anatomical matrix not found in: {source_file}")
             folds = df_splits["fold"].unique()
 
             for fold in folds: 
@@ -261,13 +257,9 @@ def main():
 
                     if not os.path.exists(dest_file):
                         shutil.copy(source_file, dest_file)
-                        print(f"📦 Matrice anatomica copiata in: {dest_file}")
+                        print(f"📦 Anatomical matrix copied in: {dest_file}")
                     else:
-                        print(f"✅ Matrice già presente in: {dest_file}")
-
-            
-            
-
+                        print(f"✅ Anatomical matrix already in: {dest_file}")
         print("✅ Adjacency matrices created.")
 
         # === Graphs
@@ -303,7 +295,6 @@ def main():
             learning_rate=model_config["learning_rate"],
             weight_decay=model_config["weight_decay"]
         )
-
 
 if __name__ == "__main__":
     main()
