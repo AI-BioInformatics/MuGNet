@@ -1,4 +1,5 @@
-# 🧬 MuGNet: A Graph-based Framework for Multi-tissue Integration in Computational Pathology
+# 🧬 MuGNet: A Graph-based Framework for Multi-tissue Integration in Computational Pathology 
+[![DOI](https://zenodo.org/badge/1070919426.svg)](https://doi.org/10.5281/zenodo.18136143)
 
 This repository provides a complete pipeline for building and training a Graph Neural Network (GNN) for survival or biomarker prediction from multi-tissue histological images. Each patient is modeled as a graph, where nodes are tissue-specific Whole Slide Image (WSI) embeddings and edges encode morphological or anatomical relationships.
 
